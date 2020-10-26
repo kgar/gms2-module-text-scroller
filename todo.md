@@ -1,0 +1,36 @@
+# To Do
+- Figure out if Draw or Draw GUI
+  - My intended coordinates are based on the GUI and not on the room coordinates. Will this be a problem in GMS2?
+  - Move the camera to bottom right of the room and see if a surface made in Draw GUI still remains anchored to the GUI coordinates...
+- Draw a transparent surface area
+- Draw text on the surface and ensure that this shows up on the screen
+- Draw too many lines of text so that it exceeds the surface height and note what happens
+- If text clips off automatically, begin working on a scrolling solution. Otherwise, resume research on how to proceed.
+- (Assuming clipping works automatically) Detect when text exceeds the height of the designated surface and establish a current scroll position 
+  - ?: Would the scroll position represent the scroll top? Scroll bottom? How do other GUIs / the web do it?
+  - I've seen recommendations that scroll position be 0-1, representing top to bottom
+- Set up some basic keyboard handling and adjust the scroll position based on keyboard input
+- Whatever the current scroll position ensure the appropriate point in the text block is visible in the surface
+- Upgrade this so that a target scroll position is set from keyboard input and current scroll position is lerp'd 
+- Implement Option 1: Scrollbar
+  - Visualize the target scroll position in a scrollbar
+    - It should set the target scroll position by a small increment, based on the height of the text
+  - Add a scrollbar thumb and make it represent target scroll position
+- Implement Option 2: Up/Down indicators
+  - Visualize the target scroll position with up/down arrow indicators at the top/bottom right of the scrollable surface area
+    - ?: Should these indicators be part of the surface or in the regular application surface?
+  - When scrolling is available in a particular direction, have the indicator visualize the direction as enabled (e.g., brighter when enabled, grayed out / transparent when disabled)
+- Implement basic dialogue choices in a windowed menu with scrolling
+  - Use up/down arrows for this
+  - The dialogue choice handler should dictate scroll position
+  - The dialogue choice should support loop-back / cycling to the opposite end of the choices
+- In the dialogue choices, provide an option to view a codex with some "lore"
+  - When showing the codex window, use the scrollbar with thumb option
+  - No loop-back; scroll should smoothly increment by line height of the text
+  - Ensure holding an arrow key will commence a smooth, fast scroll
+  
+  # Research
+- My intended coordinates are based on the GUI and not on the room coordinates. Will this be a problem in GMS2?
+- Would the scroll position represent the scroll top? Scroll bottom? How do other GUIs / the web do it?
+- Should these indicators be part of the surface or in the regular application surface?
+- When lerping, how do I time-box the lerp so that the divide between current and target scroll position is "no greater than" a certain time while not requiring that smaller scroll distances take the full allowed time?
