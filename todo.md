@@ -24,6 +24,11 @@
   - When showing the codex window, use the scrollbar with thumb option
   - No loop-back; scroll should smoothly increment by line height of the text
   - Ensure holding an arrow key will commence a smooth, fast scroll
+
+# At the end of the first draft
+- Clean up the code and try to make it as maintainable as is reasonable
+- Make the code as pluggable / reusable as possible so it can plug into various systems in the same game.
+- Change repo name to indicate that this is a longterm holding place for this mini-system template and demo.
   
   # Research
 - My intended coordinates are based on the GUI and not on the room coordinates. Will this be a problem in GMS2?
