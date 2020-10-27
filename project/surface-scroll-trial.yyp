@@ -1,6 +1,8 @@
 {
   "resources": [
+    {"id":{"name":"obj_marker","path":"objects/obj_marker/obj_marker.yy",},"order":1,},
     {"id":{"name":"obj_surface_test","path":"objects/obj_surface_test/obj_surface_test.yy",},"order":0,},
+    {"id":{"name":"spr_marker","path":"sprites/spr_marker/spr_marker.yy",},"order":0,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [

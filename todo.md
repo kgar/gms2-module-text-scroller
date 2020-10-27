@@ -1,12 +1,8 @@
 # To Do
-- Figure out if Draw or Draw GUI
-  - My intended coordinates are based on the GUI and not on the room coordinates. Will this be a problem in GMS2?
-  - Move the camera to bottom right of the room and see if a surface made in Draw GUI still remains anchored to the GUI coordinates...
-- Draw a transparent surface area
-- Draw text on the surface and ensure that this shows up on the screen
-- Draw too many lines of text so that it exceeds the surface height and note what happens
-- If text clips off automatically, begin working on a scrolling solution. Otherwise, resume research on how to proceed.
-- (Assuming clipping works automatically) Detect when text exceeds the height of the designated surface and establish a current scroll position 
+- Think about how this code should be organized
+  - How much should exist in structs? How much in scripts? How much in objects?
+  - Which component is responsible for what?
+- Detect when text exceeds the height of the designated surface and establish a current scroll position 
   - ?: Would the scroll position represent the scroll top? Scroll bottom? How do other GUIs / the web do it?
   - I've seen recommendations that scroll position be 0-1, representing top to bottom
 - Set up some basic keyboard handling and adjust the scroll position based on keyboard input
