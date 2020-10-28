@@ -1,0 +1,83 @@
+html, body {
+	margin: 0;
+	padding: 0
+}
+body {
+	font-family: sans-serif;
+    background: #fff;
+}
+body > nav {
+	margin: 1ex 0;
+	padding: 0.8em 1em;
+}
+body > nav > a {
+	color: inherit;
+	text-decoration: inherit;
+	color: #000;
+	vertical-align: middle;
+	display: none
+}
+body > nav > a:first-child {
+	display: block;
+	font-weight: bold;
+	font-size: 200%
+}
+body > nav > nav {
+	display: none;
+	padding: 1ex 1em;
+	margin: 0.8em -1em;
+	margin-bottom: -0.8em;
+	background-color: #668;
+}
+footer {
+	margin: 1em 0;
+	font-size: 70%;
+	text-align: center
+}
+body > article {
+	background-color: #fff;
+	border-radius: 0em;
+	margin: 0 auto;
+	padding: 1em;
+	padding-top: 0.25em;
+}
+article > h1,
+article > h2,
+article > h3,
+article > h4 {
+	border-radius: 0em;
+	text-shadow: 0 0 2px #000;
+	padding: 0.5em;
+	color: white;
+}
+article > h1 {
+	background-color: #444
+}
+article > h2 {
+	background-color: #666
+}
+article > h3 {
+	background-color: #888
+}
+article > h4 {
+	background-color: #aaa
+}
+
+.langc > .line {
+	color: #aaa
+}
+.langc > .num {
+	font-weight: bold;
+	color: #c80
+}
+.langc > .type {
+	font-weight: bold;
+	color: #808
+}
+.langc > .flow {
+	font-weight: bold;
+	color: #00a
+}
+.langc > .comment {
+	color: #080
+}
