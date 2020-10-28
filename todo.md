@@ -1,7 +1,5 @@
 # To Do
-- Scroll unit in pixels is too small; increase it and retest
 - Manage the press-and-hold process to behave like Windows / browsers, where initial press is followed by a short wait, after which holding the key down results in constant, smooth scroll
-- The surface keeps the previous drawing on it. This is probably by design, based on tutorials. Clear your surface area on each draw.
 - Test and refine until arrow keys and page up / page down feel good and look good
 - Upgrade this so that a target scroll position is set from keyboard input and current scroll position is lerp'd 
 - Implement Option 1: Scrollbar
