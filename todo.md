@@ -1,12 +1,9 @@
 # To Do
-- Think about how this code should be organized
-  - How much should exist in structs? How much in scripts? How much in objects?
-  - Which component is responsible for what?
-- Detect when text exceeds the height of the designated surface and establish a current scroll position 
-  - ?: Would the scroll position represent the scroll top? Scroll bottom? How do other GUIs / the web do it?
-  - I've seen recommendations that scroll position be 0-1, representing top to bottom
-- Set up some basic keyboard handling and adjust the scroll position based on keyboard input
-- Whatever the current scroll position ensure the appropriate point in the text block is visible in the surface
+- Scrolling only happens on keypress. Make it scroll smoothly when holding the key down
+- Scroll unit in pixels is too small; increase it and retest
+- Manage the press-and-hold process to behave like Windows / browsers, where initial press is followed by a short wait, after which holding the key down results in constant, smooth scroll
+- The surface keeps the previous drawing on it. This is probably by design, based on tutorials. Clear your surface area on each draw.
+- Test and refine until arrow keys and page up / page down feel good and look good
 - Upgrade this so that a target scroll position is set from keyboard input and current scroll position is lerp'd 
 - Implement Option 1: Scrollbar
   - Visualize the target scroll position in a scrollbar
@@ -31,6 +28,9 @@
 - Change repo name to indicate that this is a longterm holding place for this mini-system template and demo.
   
   # Research
+- Think about how this code should be organized
+  - How much should exist in structs? How much in scripts? How much in objects?
+  - Which component is responsible for what?
 - My intended coordinates are based on the GUI and not on the room coordinates. Will this be a problem in GMS2?
 - Would the scroll position represent the scroll top? Scroll bottom? How do other GUIs / the web do it?
 - Should these indicators be part of the surface or in the regular application surface?
