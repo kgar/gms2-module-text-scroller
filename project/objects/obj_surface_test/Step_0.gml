@@ -1,12 +1,12 @@
-if (keyboard_check_pressed(vk_up)) {
+if (keyboard_check(vk_up)) {
 	ScrollUp();
 } 
-else if (keyboard_check_pressed(vk_down)) {
+else if (keyboard_check(vk_down)) {
 	ScrollDown();
 }
-else if (keyboard_check_pressed(vk_pageup)) {
+else if (keyboard_check(vk_pageup)) {
 	PageUp();
 }
-else if (keyboard_check_pressed(vk_pagedown)) {
+else if (keyboard_check(vk_pagedown)) {
 	PageDown();
 }

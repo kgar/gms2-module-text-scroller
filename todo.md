@@ -1,5 +1,4 @@
 # To Do
-- Scrolling only happens on keypress. Make it scroll smoothly when holding the key down
 - Scroll unit in pixels is too small; increase it and retest
 - Manage the press-and-hold process to behave like Windows / browsers, where initial press is followed by a short wait, after which holding the key down results in constant, smooth scroll
 - The surface keeps the previous drawing on it. This is probably by design, based on tutorials. Clear your surface area on each draw.
