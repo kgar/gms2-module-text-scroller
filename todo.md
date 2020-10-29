@@ -1,13 +1,4 @@
 # To Do
-- Implement Option 1: Scrollbar
-  - Add option for setting scroll track height on Init()
-  - Make room for Up/Down indicators and implement those based on CanScrollUp() / CanScrollDown()
-- Implement Option 2: Up/Down indicators
-  - Visualize the target scroll position with up/down arrow indicators at the top/bottom right of the scrollable surface area
-    - ?: Should these indicators be part of the surface or in the regular application surface?
-  - When scrolling is available in a particular direction, have the indicator visualize the direction as enabled (e.g., brighter when enabled, grayed out / transparent when disabled)
-
-# At the end of the first draft
 - Clean up the code and try to make it as maintainable as is reasonable
 - Make the code as pluggable / reusable as possible so it can plug into various systems in the same game.
 - Change repo name to indicate that this is a longterm holding place for this mini-system template and demo.

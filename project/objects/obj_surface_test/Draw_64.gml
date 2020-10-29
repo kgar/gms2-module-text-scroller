@@ -55,6 +55,7 @@ draw_rectangle_color(
 	scrollUpButtonY1 + scrollButtonHeight,
 	scrollButtonBg, scrollButtonBg, scrollButtonBg, scrollButtonBg, false);
 	
+var scrollUpColor = textScroller.CanScrollUp() ? scrollButtonTextColor : scrollButtonDisabledTextColor;
 draw_triangle_color(
 	// Bottom Left
 	scrollUpButtonX1 + scrollButtonWidth / 5,
@@ -65,7 +66,7 @@ draw_triangle_color(
 	// Top center
 	scrollUpButtonX1 + scrollButtonWidth / 2,
 	scrollUpButtonY1 + scrollButtonHeight / 5,
-	scrollButtonTextColor, scrollButtonTextColor, scrollButtonTextColor, false
+	scrollUpColor, scrollUpColor, scrollUpColor, false
 );
 
 draw_rectangle_color(
@@ -75,6 +76,7 @@ draw_rectangle_color(
 	scrollDownButtonY1 + scrollButtonHeight,
 	scrollButtonBg, scrollButtonBg, scrollButtonBg, scrollButtonBg, false);
 	
+var scrollDownColor = textScroller.CanScrollDown() ? scrollButtonTextColor : scrollButtonDisabledTextColor;
 draw_triangle_color(
 	// Top Left
 	scrollDownButtonX1 + scrollButtonWidth / 5,
@@ -85,7 +87,7 @@ draw_triangle_color(
 	// Bottom center
 	scrollDownButtonX1 + scrollButtonWidth / 2,
 	scrollDownButtonY1 + scrollButtonHeight - scrollButtonHeight / 5,
-	scrollButtonTextColor, scrollButtonTextColor, scrollButtonTextColor, false
+	scrollDownColor, scrollDownColor, scrollDownColor, false
 );
 
 draw_set_halign(currentHalign);
