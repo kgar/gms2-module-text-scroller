@@ -1,18 +1,14 @@
-function TextScroller(_surface, _contentSize, _trackSize, _gripSizeMin, _singleScrollUnitPixels, _smoothScroll) constructor {
+function TextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothScroll) constructor {
 	#region Initial constructed fields
 	surfaceSize = surface_get_height(_surface);
 	contentSize = _contentSize;
 	singleScrollUnitPixels = _singleScrollUnitPixels;
 	smoothScroll = _smoothScroll;
-	gripSizeMin = _gripSizeMin;
 	#endregion
 	
 	#region Calculated fields
-	trackSize = _trackSize;
 	surfaceContentRatio = undefined;
-	gripSize = undefined;
 	surfaceScrollAreaSize = undefined;
-	trackScrollAreaSize = undefined;
 	pageScrollUnitPixels = undefined; // Represents 1 page of content (possibly minus a little for breathing room)
 	#endregion
 
@@ -25,19 +21,18 @@ function TextScroller(_surface, _contentSize, _trackSize, _gripSizeMin, _singleS
 	function RecalculateScrollableContentSurface() {
 		pageScrollUnitPixels = surfaceSize * 0.9;
 		surfaceContentRatio = surfaceSize / contentSize;
-		gripSize = clamp(trackSize * surfaceContentRatio, gripSizeMin, trackSize);
-		trackScrollAreaSize = trackSize - gripSize;
 		surfaceScrollAreaSize = contentSize - surfaceSize;
+		OnBaseRecalculationCompleted();
 		SetSurfacePosition(0);
 	}
+	
+	function OnBaseRecalculationCompleted() {	}
 
 	function SetSurfacePosition(_surfaceScrollPosition) {
 		surfaceScrollPosition = _surfaceScrollPosition; 
 		if (!smoothScroll || targetScrollPosition == undefined) {
 			targetScrollPosition = surfaceScrollPosition;
 		}
-		var surfacePositionRatio = surfaceScrollPosition / surfaceScrollAreaSize;
-		gripPositionOnTrack = trackScrollAreaSize * surfacePositionRatio;
 	}
 
 	function ScrollUp() {
@@ -117,5 +112,27 @@ function TextScroller(_surface, _contentSize, _trackSize, _gripSizeMin, _singleS
 	}
 	
 	// Init routines
+	RecalculateScrollableContentSurface();
+}
+
+function ScrollbarTextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothScroll, _trackSize, _gripSizeMin) : TextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothScroll) constructor {
+	trackSize = _trackSize;
+	gripSizeMin = _gripSizeMin;
+	
+	gripSize = undefined;
+	trackScrollAreaSize = undefined;
+	
+	function OnBaseRecalculationCompleted() {
+		gripSize = clamp(trackSize * surfaceContentRatio, gripSizeMin, trackSize);
+		trackScrollAreaSize = trackSize - gripSize;
+	}
+	
+	baseSetSurfacePosition = SetSurfacePosition;
+	function SetSurfacePosition(_surfaceScrollPosition) {
+		baseSetSurfacePosition(_surfaceScrollPosition);
+		var surfacePositionRatio = surfaceScrollPosition / surfaceScrollAreaSize;
+		gripPositionOnTrack = trackScrollAreaSize * surfacePositionRatio;
+	}
+	
 	RecalculateScrollableContentSurface();
 }

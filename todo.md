@@ -1,6 +1,5 @@
 # To Do
-- Extract Scrollbar positioning to its own struct.
-  - Extract track and grip management from the text scroller and put it in the Scrollbar struct
+- Extract Scrollbar positioning to ScrollbarTextScroller?
 - Clean up the code and try to make it as maintainable as is reasonable
 - Make the code as pluggable / reusable as possible so it can plug into various systems in the same game.
 - Change repo name to indicate that this is a longterm holding place for this mini-system template and demo.

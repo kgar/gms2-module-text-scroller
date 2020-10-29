@@ -10,7 +10,7 @@ if (!surface_exists(surface)) {
 		delete textScroller;
 	}
 	
-	textScroller = new TextScroller(surface, contentHeight, trackSize, trackSize / 10, singleScrollHeight, true);
+	textScroller = new ScrollbarTextScroller(surface, contentHeight, trackSize / 10, true, trackSize, singleScrollHeight);
 }
 
 // Draw textbox border
