@@ -20,3 +20,22 @@ surface_reset_target();
 draw_surface(surface, x1 + padding, y1 + padding);
 
 draw_set_font(currentFont);
+
+var smoothButtonColor = smoothScroll ? c_aqua : c_gray;
+draw_rectangle_color(
+	smoothButtonX1, 
+	smoothButtonY1, 
+	smoothButtonX1 + smoothButtonWidth, 
+	smoothButtonY1 + smoothButtonHeight, 
+	smoothButtonColor, smoothButtonColor, smoothButtonColor, smoothButtonColor, 
+	!smoothScroll);
+
+draw_set_halign(fa_center);
+var valign = draw_get_valign();
+draw_set_valign(fa_middle);
+draw_set_color(smoothScroll ? c_black : c_gray);
+draw_text(smoothButtonX1 + smoothButtonWidth / 2, 
+	smoothButtonY1 + smoothButtonHeight / 2, 
+	smoothScroll ? "Smooth" : "Rough");
+draw_set_valign(valign);
+draw_set_halign(fa_left);

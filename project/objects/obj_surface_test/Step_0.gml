@@ -44,4 +44,21 @@ if (released) {
 	keepScrolling = false;
 }
 
-SmoothScrollTick();
+if (smoothScroll) {
+	SmoothScrollTick();
+}
+
+if (mouse_check_button_pressed(mb_left)) {
+	var gui_mouse_x = device_mouse_x_to_gui(0);
+	var gui_mouse_y = device_mouse_y_to_gui(0);
+	show_debug_message("Mouse_x" + string(gui_mouse_x));
+	show_debug_message("Mouse_y" + string(gui_mouse_y));
+	var buttonClicked = gui_mouse_x > smoothButtonX1 && 
+		gui_mouse_x < smoothButtonX1 + smoothButtonWidth &&
+		gui_mouse_y > smoothButtonY1 &&
+		gui_mouse_y < smoothButtonY1 + smoothButtonHeight;
+	
+	if (buttonClicked) {
+		smoothScroll = !smoothScroll;
+	}
+}
