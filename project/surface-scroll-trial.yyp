@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"scr_text_scroller","path":"scripts/scr_text_scroller/scr_text_scroller.yy",},"order":0,},
     {"id":{"name":"fnt_book","path":"fonts/fnt_book/fnt_book.yy",},"order":0,},
     {"id":{"name":"obj_marker","path":"objects/obj_marker/obj_marker.yy",},"order":1,},
     {"id":{"name":"obj_surface_test","path":"objects/obj_surface_test/obj_surface_test.yy",},"order":0,},

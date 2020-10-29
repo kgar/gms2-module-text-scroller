@@ -1,50 +1,50 @@
 if (keyboard_check_pressed(vk_up)) {
 	scrollHold = vk_up;
 	keepScrolling = false;
-	ScrollUp();
+	textScroller.ScrollUp();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_down)) {
 	scrollHold = vk_down;
 	keepScrolling = false;
-	ScrollDown();
+	textScroller.ScrollDown();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_pageup)) {
 	scrollHold = vk_pageup;
 	keepScrolling = false;
-	PageUp();
+	textScroller.PageUp();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_pagedown)) {
 	scrollHold = vk_pagedown;
 	keepScrolling = false;
-	PageDown();
+	textScroller.PageDown();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_home)) {
 	scrollHold = vk_home;
 	keepScrolling = false;
-	ScrollToTop();
+	textScroller.ScrollToTop();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_end)) {
 	scrollHold = vk_end;
 	keepScrolling = false;
-	ScrollToBottom();
+	textScroller.ScrollToBottom();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check(vk_up) && keepScrolling) {
-	ScrollUp();
+	textScroller.ScrollUp();
 } 
 else if (keyboard_check(vk_down) && keepScrolling) {
-	ScrollDown();
+	textScroller.ScrollDown();
 }
 else if (keyboard_check(vk_pageup) && keepScrolling) {
-	PageUp();
+	textScroller.PageUp();
 }
 else if (keyboard_check(vk_pagedown) && keepScrolling) {
-	PageDown();
+	textScroller.PageDown();
 }
 
 var released = keyboard_check_released(vk_up) || 
@@ -56,8 +56,8 @@ if (released) {
 	keepScrolling = false;
 }
 
-if (smoothScroll) {
-	SmoothScrollTick();
+if (textScroller != undefined && textScroller.smoothScroll) {
+	textScroller.SmoothScrollTick();
 }
 
 if (mouse_check_button_pressed(mb_left)) {
@@ -71,7 +71,7 @@ if (mouse_check_button_pressed(mb_left)) {
 		gui_mouse_y < smoothButtonY1 + smoothButtonHeight;
 	
 	if (buttonClicked) {
-		smoothScroll = !smoothScroll;
+		textScroller.smoothScroll = !textScroller.smoothScroll;
 	}
 }
 
