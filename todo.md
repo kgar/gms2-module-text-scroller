@@ -1,7 +1,4 @@
 # To Do
-- Manage the press-and-hold process to behave like Windows / browsers, where initial press is followed by a short wait, after which holding the key down results in constant, smooth scroll
-- Test and refine until arrow keys and page up / page down feel good and look good
-- Upgrade this so that a target scroll position is set from keyboard input and current scroll position is lerp'd 
 - Implement Option 1: Scrollbar
   - Visualize the target scroll position in a scrollbar
     - It should set the target scroll position by a small increment, based on the height of the text

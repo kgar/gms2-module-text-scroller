@@ -4,7 +4,8 @@ draw_set_font(fnt_book);
 if (!surface_exists(surface)) {
 	surface = surface_create(surfaceWidth, surfaceHeight);
 	var contentHeight = string_height_ext(textToDraw, -1, surface_get_width(surface) - 20);
-	InitScrollableContentSurface(surface, contentHeight, surfaceHeight / 10, 4);
+	var singleScrollHeight = string_height("M") / 2;
+	InitScrollableContentSurface(surface, contentHeight, surfaceHeight / 10, singleScrollHeight, true);
 }
 
 draw_rectangle_color(x1, y1, x2, y2, c_gray, c_gray, c_gray, c_gray, true);
