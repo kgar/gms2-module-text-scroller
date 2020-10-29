@@ -1,4 +1,4 @@
-function TextScroller(_surface, _contentSize, _gripSizeMin, _singleScrollUnitPixels, _smoothScroll) constructor {
+function TextScroller(_surface, _contentSize, _trackSize, _gripSizeMin, _singleScrollUnitPixels, _smoothScroll) constructor {
 	#region Initial constructed fields
 	surfaceSize = surface_get_height(_surface);
 	contentSize = _contentSize;
@@ -8,7 +8,7 @@ function TextScroller(_surface, _contentSize, _gripSizeMin, _singleScrollUnitPix
 	#endregion
 	
 	#region Calculated fields
-	trackSize = undefined;
+	trackSize = _trackSize;
 	surfaceContentRatio = undefined;
 	gripSize = undefined;
 	surfaceScrollAreaSize = undefined;
@@ -24,7 +24,6 @@ function TextScroller(_surface, _contentSize, _gripSizeMin, _singleScrollUnitPix
 	
 	function RecalculateScrollableContentSurface() {
 		pageScrollUnitPixels = surfaceSize * 0.9;
-		trackSize = surfaceSize; // TODO: Account for up/down arrows\
 		surfaceContentRatio = surfaceSize / contentSize;
 		gripSize = clamp(trackSize * surfaceContentRatio, gripSizeMin, trackSize);
 		trackScrollAreaSize = trackSize - gripSize;

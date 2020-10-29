@@ -10,7 +10,7 @@ if (!surface_exists(surface)) {
 		delete textScroller;
 	}
 	
-	textScroller = new TextScroller(surface, contentHeight, surfaceHeight / 10, singleScrollHeight, true);
+	textScroller = new TextScroller(surface, contentHeight, trackSize, trackSize / 10, singleScrollHeight, true);
 }
 
 // Draw textbox border
@@ -26,6 +26,8 @@ surface_reset_target();
 draw_surface(surface, textboxX1 + padding, textboxY1 + padding + scrollTrackBorderSize);
 
 // Draw Scrollbar
+
+// Track
 draw_rectangle_color(
 	scrollTrackX1, 
 	scrollTrackY1, 
@@ -40,6 +42,54 @@ draw_rectangle_color(
 	scrollTrackX1 + gripWidth,
 	scrollTrackY1 + textScroller.gripPositionOnTrack + textScroller.gripSize,
 	gripColor, gripColor, gripColor, gripColor, false);
+
+// Buttons
+var currentHalign = draw_get_halign();
+var currentValign = draw_get_valign();
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_rectangle_color(
+	scrollUpButtonX1,
+	scrollUpButtonY1,
+	scrollUpButtonX1 + scrollButtonWidth,
+	scrollUpButtonY1 + scrollButtonHeight,
+	scrollButtonBg, scrollButtonBg, scrollButtonBg, scrollButtonBg, false);
+	
+draw_triangle_color(
+	// Bottom Left
+	scrollUpButtonX1 + scrollButtonWidth / 5,
+	scrollUpButtonY1 + scrollButtonHeight - scrollButtonHeight / 5,
+	// Bottom Right
+	scrollUpButtonX1 + scrollButtonWidth - scrollButtonWidth / 5,
+	scrollUpButtonY1 + scrollButtonHeight - scrollButtonHeight / 5,
+	// Top center
+	scrollUpButtonX1 + scrollButtonWidth / 2,
+	scrollUpButtonY1 + scrollButtonHeight / 5,
+	scrollButtonTextColor, scrollButtonTextColor, scrollButtonTextColor, false
+);
+
+draw_rectangle_color(
+	scrollDownButtonX1,
+	scrollDownButtonY1,
+	scrollDownButtonX1 + scrollButtonWidth,
+	scrollDownButtonY1 + scrollButtonHeight,
+	scrollButtonBg, scrollButtonBg, scrollButtonBg, scrollButtonBg, false);
+	
+draw_triangle_color(
+	// Top Left
+	scrollDownButtonX1 + scrollButtonWidth / 5,
+	scrollDownButtonY1 + scrollButtonHeight / 5,
+	// Top Right
+	scrollDownButtonX1 + scrollButtonWidth - scrollButtonWidth / 5,
+	scrollDownButtonY1 + scrollButtonHeight / 5,
+	// Bottom center
+	scrollDownButtonX1 + scrollButtonWidth / 2,
+	scrollDownButtonY1 + scrollButtonHeight - scrollButtonHeight / 5,
+	scrollButtonTextColor, scrollButtonTextColor, scrollButtonTextColor, false
+);
+
+draw_set_halign(currentHalign);
+draw_set_valign(currentValign);
 
 draw_set_font(currentFont);
 
