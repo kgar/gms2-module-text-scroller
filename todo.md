@@ -1,7 +1,7 @@
 # To Do
 - Implement Option 1: Scrollbar
-  - Visualize the current scroll position in a scrollbar
-  - Add a scrollbar grip and make it represent target scroll position
+  - Add option for setting scroll track height on Init()
+  - Make room for Up/Down indicators and implement those based on CanScrollUp() / CanScrollDown()
 - Implement Option 2: Up/Down indicators
   - Visualize the target scroll position with up/down arrow indicators at the top/bottom right of the scrollable surface area
     - ?: Should these indicators be part of the surface or in the regular application surface?
