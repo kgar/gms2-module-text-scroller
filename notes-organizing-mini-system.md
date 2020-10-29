@@ -24,4 +24,7 @@ This scrolling feature is kind of a subsystem of its own. With that said, I'd li
 - Place to lerp() or otherwise move current scroll position to target
   - This could be in a function call
 
+## Generally, what I think I should do
+
+Most of the core calculations and functions can be held in a struct with a constructor. The consumer of the struct can manage UI concerns using the struct's properties.
 
