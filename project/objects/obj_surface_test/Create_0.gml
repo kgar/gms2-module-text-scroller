@@ -3,7 +3,7 @@ surface = -1;
 padding = 10;
 textboxWidth = display_get_gui_width() * 0.75;
 textboxHeight = display_get_gui_height() * 0.75;
-x1 = display_get_gui_width() / 2 - textboxWidth / 2;
+x1 = 10 ;// display_get_gui_width() / 2 - textboxWidth / 2;
 y1 = display_get_gui_height() / 2 - textboxHeight / 2;
 x2 = x1 + textboxWidth;
 y2 = y1 + textboxHeight;
@@ -30,7 +30,6 @@ surfaceContentRatio = undefined;
 gripSize = undefined;
 surfaceScrollAreaSize = undefined;
 trackScrollAreaSize = undefined;
-gripPositionOnTrack = undefined;
 singleScrollUnitPixels = undefined; // Should be 1 pixel when scrolling through a page of text
 pageScrollUnitPixels = undefined; // Represents 1 page of content (possibly minus a little for breathing room)
 smoothScroll = false;
@@ -38,6 +37,7 @@ smoothScroll = false;
 // Scrollability: Update on user interaction
 surfaceScrollPosition = undefined;
 targetScrollPosition = undefined;
+gripPositionOnTrack = undefined;
 
 // TODO: Add Mouse interaction variables?
 
@@ -111,4 +111,32 @@ function SmoothScrollTick() {
 		return;
 	}
 	SetSurfacePosition(lerp(surfaceScrollPosition, targetScrollPosition, 0.35));
+}
+
+function ScrollToTop() {
+	if (smoothScroll) {
+		targetScrollPosition = 0;
+	} else {
+		SetSurfacePosition(0);
+	}
+}
+
+function ScrollToBottom() {
+	if (smoothScroll) {
+		targetScrollPosition = surfaceScrollAreaSize;
+	} else {
+		SetSurfacePosition(surfaceScrollAreaSize);
+	}
+}
+
+function CanScrollUp() {
+	return smoothScroll 
+		? targetScrollPosition > 0 
+		: surfaceScrollPosition > 0;
+}
+
+function CanScrollDown() {
+	return smoothScroll 
+		? targetScrollPosition < surfaceScrollAreaSize 
+		: surfaceScrollPosition < surfaceScrollAreaSize;
 }

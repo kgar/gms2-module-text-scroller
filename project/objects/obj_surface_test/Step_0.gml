@@ -22,6 +22,18 @@ else if (keyboard_check_pressed(vk_pagedown)) {
 	PageDown();
 	alarm[0] = room_speed / 2;
 }
+else if (keyboard_check_pressed(vk_home)) {
+	scrollHold = vk_home;
+	keepScrolling = false;
+	ScrollToTop();
+	alarm[0] = room_speed / 2;
+}
+else if (keyboard_check_pressed(vk_end)) {
+	scrollHold = vk_end;
+	keepScrolling = false;
+	ScrollToBottom();
+	alarm[0] = room_speed / 2;
+}
 else if (keyboard_check(vk_up) && keepScrolling) {
 	ScrollUp();
 } 
@@ -61,4 +73,8 @@ if (mouse_check_button_pressed(mb_left)) {
 	if (buttonClicked) {
 		smoothScroll = !smoothScroll;
 	}
+}
+
+if (keyboard_check_pressed(vk_escape)) {
+	game_end();
 }

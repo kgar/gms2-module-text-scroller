@@ -39,3 +39,22 @@ draw_text(smoothButtonX1 + smoothButtonWidth / 2,
 	smoothScroll ? "Smooth" : "Rough");
 draw_set_valign(valign);
 draw_set_halign(fa_left);
+
+draw_set_color(c_white);
+var debugStats = [
+	"Content size:\t" + string(contentSize),
+	"Surface size:\t" + string(surfaceSize),
+	"Track size:\t" + string(trackSize),
+	"Grip position:\t" + string(gripPositionOnTrack),
+	"Can scroll up:\t" + string(CanScrollUp()),
+	"Can scroll down:\t" + string(CanScrollDown()),
+];
+
+var statX = x2 + 10;
+var statY = y1;
+var lineHeight = string_height("M");
+var statsLength = array_length(debugStats);
+for (var i = 0; i < statsLength; i++) {
+	draw_text(statX, statY, debugStats[i]);
+	statY += lineHeight;
+}
