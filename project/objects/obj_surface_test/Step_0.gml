@@ -1,50 +1,50 @@
 if (keyboard_check_pressed(vk_up)) {
 	scrollHold = vk_up;
 	keepScrolling = false;
-	textScroller.ScrollUp();
+	textScroller.scroll_up();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_down)) {
 	scrollHold = vk_down;
 	keepScrolling = false;
-	textScroller.ScrollDown();
+	textScroller.scroll_down();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_pageup)) {
 	scrollHold = vk_pageup;
 	keepScrolling = false;
-	textScroller.PageUp();
+	textScroller.page_up();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_pagedown)) {
 	scrollHold = vk_pagedown;
 	keepScrolling = false;
-	textScroller.PageDown();
+	textScroller.page_down();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_home)) {
 	scrollHold = vk_home;
 	keepScrolling = false;
-	textScroller.ScrollToTop();
+	textScroller.scroll_to_top();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check_pressed(vk_end)) {
 	scrollHold = vk_end;
 	keepScrolling = false;
-	textScroller.ScrollToBottom();
+	textScroller.scroll_to_bottom();
 	alarm[0] = room_speed / 2;
 }
 else if (keyboard_check(vk_up) && keepScrolling) {
-	textScroller.ScrollUp();
+	textScroller.scroll_up();
 } 
 else if (keyboard_check(vk_down) && keepScrolling) {
-	textScroller.ScrollDown();
+	textScroller.scroll_down();
 }
 else if (keyboard_check(vk_pageup) && keepScrolling) {
-	textScroller.PageUp();
+	textScroller.page_up();
 }
 else if (keyboard_check(vk_pagedown) && keepScrolling) {
-	textScroller.PageDown();
+	textScroller.page_down();
 }
 
 var released = keyboard_check_released(vk_up) || 
@@ -57,7 +57,7 @@ if (released) {
 }
 
 if (textScroller != undefined && textScroller.smoothScroll) {
-	textScroller.SmoothScrollTick();
+	textScroller.smooth_scroll_step();
 }
 
 if (mouse_check_button_pressed(mb_left)) {

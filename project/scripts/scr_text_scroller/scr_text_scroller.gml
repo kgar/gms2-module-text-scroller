@@ -1,6 +1,6 @@
-function TextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothScroll) constructor {
+function TextScroller(_surfaceSize, _contentSize, _singleScrollUnitPixels, _smoothScroll) constructor {
 	#region Initial constructed fields
-	surfaceSize = surface_get_height(_surface);
+	surfaceSize = _surfaceSize;
 	contentSize = _contentSize;
 	singleScrollUnitPixels = _singleScrollUnitPixels;
 	smoothScroll = _smoothScroll;
@@ -18,121 +18,121 @@ function TextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothSc
 	gripPositionOnTrack = undefined;
 	#endregion
 	
-	function RecalculateScrollableContentSurface() {
+	function recalculate() {
 		pageScrollUnitPixels = surfaceSize * 0.9;
 		surfaceContentRatio = surfaceSize / contentSize;
 		surfaceScrollAreaSize = contentSize - surfaceSize;
-		OnBaseRecalculationCompleted();
-		SetSurfacePosition(0);
+		on_base_recalculation_completed();
+		set_scroll_position(0);
 	}
 	
-	function OnBaseRecalculationCompleted() {	}
+	function on_base_recalculation_completed() {	}
 
-	function SetSurfacePosition(_surfaceScrollPosition) {
+	function set_scroll_position(_surfaceScrollPosition) {
 		surfaceScrollPosition = _surfaceScrollPosition; 
 		if (!smoothScroll || targetScrollPosition == undefined) {
 			targetScrollPosition = surfaceScrollPosition;
 		}
 	}
 
-	function ScrollUp() {
+	function scroll_up() {
 		var scrollPosition = smoothScroll ? targetScrollPosition : surfaceScrollPosition;
 		var newPosition = clamp(scrollPosition - singleScrollUnitPixels, 0, surfaceScrollAreaSize);
 		if (smoothScroll) {
 			targetScrollPosition = newPosition;
 		} else {
-			SetSurfacePosition(newPosition);
+			set_scroll_position(newPosition);
 		}
 	
 	}
 
-	function ScrollDown() {
+	function scroll_down() {
 		var scrollPosition = smoothScroll ? targetScrollPosition : surfaceScrollPosition;
 		var newPosition = clamp(scrollPosition + singleScrollUnitPixels, 0, surfaceScrollAreaSize);
 		if (smoothScroll) {
 			targetScrollPosition = newPosition;
 		} else {
-			SetSurfacePosition(newPosition);
+			set_scroll_position(newPosition);
 		}
 	}
 
-	function PageUp() {
+	function page_up() {
 		var scrollPosition = smoothScroll ? targetScrollPosition : surfaceScrollPosition;
 		var newPosition = clamp(scrollPosition - pageScrollUnitPixels, 0, surfaceScrollAreaSize);
 		if (smoothScroll) {
 			targetScrollPosition = newPosition;
 		} else {
-			SetSurfacePosition(newPosition);
+			set_scroll_position(newPosition);
 		}
 	}
 
-	function PageDown() {
+	function page_down() {
 		var scrollPosition = smoothScroll ? targetScrollPosition : surfaceScrollPosition;
 		var newPosition = clamp(scrollPosition + pageScrollUnitPixels, 0, surfaceScrollAreaSize);
 		if (smoothScroll) {
 			targetScrollPosition = newPosition;
 		} else {
-			SetSurfacePosition(newPosition);
+			set_scroll_position(newPosition);
 		}
 	}
 
-	function SmoothScrollTick() {
+	function smooth_scroll_step() {
 		if (targetScrollPosition = undefined) {
 			return;
 		}
-		SetSurfacePosition(lerp(surfaceScrollPosition, targetScrollPosition, 0.35));
+		set_scroll_position(lerp(surfaceScrollPosition, targetScrollPosition, 0.35));
 	}
 
-	function ScrollToTop() {
+	function scroll_to_top() {
 		if (smoothScroll) {
 			targetScrollPosition = 0;
 		} else {
-			SetSurfacePosition(0);
+			set_scroll_position(0);
 		}
 	}
 
-	function ScrollToBottom() {
+	function scroll_to_bottom() {
 		if (smoothScroll) {
 			targetScrollPosition = surfaceScrollAreaSize;
 		} else {
-			SetSurfacePosition(surfaceScrollAreaSize);
+			set_scroll_position(surfaceScrollAreaSize);
 		}
 	}
 
-	function CanScrollUp() {
+	function can_scroll_up() {
 		return smoothScroll 
 			? targetScrollPosition > 0 
 			: surfaceScrollPosition > 0;
 	}
 
-	function CanScrollDown() {
+	function can_scroll_down() {
 		return smoothScroll 
 			? targetScrollPosition < surfaceScrollAreaSize 
 			: surfaceScrollPosition < surfaceScrollAreaSize;
 	}
 	
 	// Init routines
-	RecalculateScrollableContentSurface();
+	recalculate();
 }
 
-function ScrollbarTextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothScroll, _trackSize, _gripSizeMin) : TextScroller(_surface, _contentSize, _singleScrollUnitPixels, _smoothScroll) constructor {
+function ScrollbarTextScroller(_surfaceSize, _contentSize, _singleScrollUnitPixels, _smoothScroll, _trackSize, _gripSizeMin) : TextScroller(_surfaceSize, _contentSize, _singleScrollUnitPixels, _smoothScroll) constructor {
 	trackSize = _trackSize;
 	gripSizeMin = _gripSizeMin;
 	
 	gripSize = undefined;
 	trackScrollAreaSize = undefined;
 	
-	function OnBaseRecalculationCompleted() {
+	function on_base_recalculation_completed() {
 		gripSize = clamp(trackSize * surfaceContentRatio, gripSizeMin, trackSize);
 		trackScrollAreaSize = trackSize - gripSize;
 	}
 	
-	baseSetSurfacePosition = SetSurfacePosition;
-	function SetSurfacePosition(_surfaceScrollPosition) {
+	baseSetSurfacePosition = set_scroll_position;
+	function set_scroll_position(_surfaceScrollPosition) {
 		baseSetSurfacePosition(_surfaceScrollPosition);
 		var surfacePositionRatio = surfaceScrollPosition / surfaceScrollAreaSize;
 		gripPositionOnTrack = trackScrollAreaSize * surfacePositionRatio;
 	}
 	
-	RecalculateScrollableContentSurface();
+	recalculate();
 }

@@ -10,7 +10,7 @@ if (!surface_exists(surface)) {
 		delete textScroller;
 	}
 	
-	textScroller = new ScrollbarTextScroller(surface, contentHeight, trackSize / 10, true, trackSize, singleScrollHeight);
+	textScroller = new ScrollbarTextScroller(surface_get_height(surface), contentHeight, trackSize / 10, true, trackSize, singleScrollHeight);
 }
 
 // Draw textbox border
@@ -55,7 +55,7 @@ draw_rectangle_color(
 	scrollUpButtonY1 + scrollButtonHeight,
 	scrollButtonBg, scrollButtonBg, scrollButtonBg, scrollButtonBg, false);
 	
-var scrollUpColor = textScroller.CanScrollUp() ? scrollButtonTextColor : scrollButtonDisabledTextColor;
+var scrollUpColor = textScroller.can_scroll_up() ? scrollButtonTextColor : scrollButtonDisabledTextColor;
 draw_triangle_color(
 	// Bottom Left
 	scrollUpButtonX1 + scrollButtonWidth / 5,
@@ -76,7 +76,7 @@ draw_rectangle_color(
 	scrollDownButtonY1 + scrollButtonHeight,
 	scrollButtonBg, scrollButtonBg, scrollButtonBg, scrollButtonBg, false);
 	
-var scrollDownColor = textScroller.CanScrollDown() ? scrollButtonTextColor : scrollButtonDisabledTextColor;
+var scrollDownColor = textScroller.can_scroll_down() ? scrollButtonTextColor : scrollButtonDisabledTextColor;
 draw_triangle_color(
 	// Top Left
 	scrollDownButtonX1 + scrollButtonWidth / 5,
@@ -122,8 +122,8 @@ var debugStats = [
 	"Surface size:\t" + string(textScroller.surfaceSize),
 	"Track size:\t" + string(textScroller.trackSize),
 	"Grip position:\t" + string(textScroller.gripPositionOnTrack),
-	"Can scroll up:\t" + string(textScroller.CanScrollUp()),
-	"Can scroll down:\t" + string(textScroller.CanScrollDown()),
+	"Can scroll up:\t" + string(textScroller.can_scroll_up()),
+	"Can scroll down:\t" + string(textScroller.can_scroll_down()),
 ];
 
 var statX = textboxX2 + 10;
