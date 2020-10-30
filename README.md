@@ -14,6 +14,10 @@ This repo also contains a simple demo that shows how to use `TextScroller` with 
 
 The scrollbar-specific content is in a sub-struct of `TextScroller` because there are numerous cases where a game system will not need the scrollbar track or grip calculations, so including them when not needed is a bit confusing.
 
+## Getting Started
+
+Copy the `scr_text_scroller` contents to your project and begin using it. For examples on how to leverage a surface and smooth scrolling, check out the demo code in this repo.
+
 ## Credits
 
 This module's scroll position logic was based almost entirely on this [excellent article on implementing a scrollbar](http://csdgn.org/article/scrollbar).
